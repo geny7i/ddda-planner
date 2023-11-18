@@ -1,0 +1,12 @@
+export const VOCATION_SELECTOR = 'VOCATION_SELECTOR';
+export const VOCATION_PATH = 'VOCATION_PATH';
+export const STRATEGY_BOARD = 'STRATEGY_BOARD';
+export const DRAG_AND_DROP = 'DRAG_AND_DROP';
+
+const SLICE_KEYS = {
+  VOCATION_SELECTOR,
+  VOCATION_PATH,
+  STRATEGY_BOARD,
+} as const;
+
+export default SLICE_KEYS;
