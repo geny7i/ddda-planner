@@ -1,4 +1,4 @@
-import { VocationId } from 'models/vocation';
+import { VocationId, VOCATION_IDS } from 'models/vocation';
 import { LevelRangeId } from 'models/levelRange';
 import { StatId, Status, evaluationStatus } from 'models/status';
 
@@ -11,7 +11,7 @@ export type StatusGrowth = {
 export const statusGrowths: readonly StatusGrowth[] = [
   {
     levelRangeId: LevelRangeId.onlyLv1,
-    vocationId: VocationId.fighter,
+    vocationId: VOCATION_IDS.fighter,
     status: {
       hp: 450,
       st: 500,
@@ -23,7 +23,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.onlyLv1,
-    vocationId: VocationId.strider,
+    vocationId: VOCATION_IDS.strider,
     status: {
       hp: 430,
       st: 500,
@@ -35,7 +35,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.onlyLv1,
-    vocationId: VocationId.mage,
+    vocationId: VOCATION_IDS.mage,
     status: {
       hp: 410,
       st: 500,
@@ -48,7 +48,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   // forLv10
   {
     levelRangeId: LevelRangeId.forLv10,
-    vocationId: VocationId.fighter,
+    vocationId: VOCATION_IDS.fighter,
     status: {
       hp: 30,
       st: 20,
@@ -60,7 +60,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv10,
-    vocationId: VocationId.strider,
+    vocationId: VOCATION_IDS.strider,
     status: {
       hp: 25,
       st: 25,
@@ -72,7 +72,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv10,
-    vocationId: VocationId.mage,
+    vocationId: VOCATION_IDS.mage,
     status: {
       hp: 22,
       st: 20,
@@ -85,7 +85,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   // forLv100
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.fighter,
+    vocationId: VOCATION_IDS.fighter,
     status: {
       hp: 37,
       st: 15,
@@ -97,7 +97,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.strider,
+    vocationId: VOCATION_IDS.strider,
     status: {
       hp: 25,
       st: 25,
@@ -109,7 +109,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.mage,
+    vocationId: VOCATION_IDS.mage,
     status: {
       hp: 21,
       st: 10,
@@ -121,7 +121,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.warrior,
+    vocationId: VOCATION_IDS.warrior,
     status: {
       hp: 40,
       st: 10,
@@ -133,7 +133,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.ranger,
+    vocationId: VOCATION_IDS.ranger,
     status: {
       hp: 21,
       st: 30,
@@ -145,7 +145,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.sorcerer,
+    vocationId: VOCATION_IDS.sorcerer,
     status: {
       hp: 16,
       st: 15,
@@ -157,7 +157,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.assassin,
+    vocationId: VOCATION_IDS.assassin,
     status: {
       hp: 22,
       st: 27,
@@ -169,7 +169,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.magick_archer,
+    vocationId: VOCATION_IDS.magick_archer,
     status: {
       hp: 21,
       st: 20,
@@ -181,7 +181,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv100,
-    vocationId: VocationId.mystic_knight,
+    vocationId: VOCATION_IDS.mystic_knight,
     status: {
       hp: 30,
       st: 20,
@@ -195,7 +195,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   // forLv200
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.fighter,
+    vocationId: VOCATION_IDS.fighter,
     status: {
       hp: 15,
       st: 5,
@@ -207,7 +207,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.strider,
+    vocationId: VOCATION_IDS.strider,
     status: {
       hp: 5,
       st: 15,
@@ -219,7 +219,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.mage,
+    vocationId: VOCATION_IDS.mage,
     status: {
       hp: 10,
       st: 10,
@@ -231,7 +231,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.warrior,
+    vocationId: VOCATION_IDS.warrior,
     status: {
       hp: 5,
       st: 15,
@@ -243,7 +243,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.ranger,
+    vocationId: VOCATION_IDS.ranger,
     status: {
       hp: 5,
       st: 15,
@@ -255,7 +255,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.sorcerer,
+    vocationId: VOCATION_IDS.sorcerer,
     status: {
       hp: 10,
       st: 10,
@@ -267,7 +267,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.assassin,
+    vocationId: VOCATION_IDS.assassin,
     status: {
       hp: 5,
       st: 15,
@@ -279,7 +279,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.magick_archer,
+    vocationId: VOCATION_IDS.magick_archer,
     status: {
       hp: 10,
       st: 10,
@@ -291,7 +291,7 @@ export const statusGrowths: readonly StatusGrowth[] = [
   },
   {
     levelRangeId: LevelRangeId.forLv200,
-    vocationId: VocationId.mystic_knight,
+    vocationId: VOCATION_IDS.mystic_knight,
     status: {
       hp: 15,
       st: 5,

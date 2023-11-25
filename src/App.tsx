@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import LevelingPlan from 'features/leveling-chart/components/LevelingChart';
 import StrategyBoard from 'features/strategy-board/components/StrategyBoard';
 import { useDrop } from 'react-dnd';
+import InitializeFromRestoreParameter from 'components/InitializeFromRestoreParameter';
 
 function Mobile() {
   return <div className="App">mobile</div>;
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<StrategyBoard />} />
           <Route path="/chart" element={<LevelingPlan />} />
           <Route path="/mobile" element={<Mobile />} />
+          <Route path="/restore" element={<InitializeFromRestoreParameter />} />
         </Routes>
       </Router>
     </div>

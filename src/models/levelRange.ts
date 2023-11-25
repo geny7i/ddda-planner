@@ -1,4 +1,4 @@
-import { VocationId } from './vocation';
+import { VOCATION_IDS, VocationId } from './vocation';
 
 export enum LevelRangeId {
   onlyLv1 = 'onlyLv1',
@@ -15,19 +15,19 @@ export type LevelRange = {
 };
 
 const basicVocationIds: VocationId[] = [
-  VocationId.fighter,
-  VocationId.strider,
-  VocationId.mage,
+  VOCATION_IDS.fighter,
+  VOCATION_IDS.strider,
+  VOCATION_IDS.mage,
 ];
 const advancedVocationIds: VocationId[] = [
-  VocationId.warrior,
-  VocationId.ranger,
-  VocationId.sorcerer,
+  VOCATION_IDS.warrior,
+  VOCATION_IDS.ranger,
+  VOCATION_IDS.sorcerer,
 ];
 const HybridVocationIds: VocationId[] = [
-  VocationId.assassin,
-  VocationId.magick_archer,
-  VocationId.mystic_knight,
+  VOCATION_IDS.assassin,
+  VOCATION_IDS.magick_archer,
+  VOCATION_IDS.mystic_knight,
 ];
 const allVocationIds = [
   ...basicVocationIds,

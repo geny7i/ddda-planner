@@ -6,14 +6,12 @@ import { LevelRangeId, getLevelRangeById } from 'models/levelRange';
 import { RootState } from 'src/initializers/store';
 import { CharacterInfo } from 'models/playerInfo';
 
-export type Step = VocationId;
-
 export type State = {
   weightClass: WeightClass;
-  pathForOnlyLv1: Step[];
-  pathForLv10: Step[];
-  pathForLv100: Step[];
-  pathForLv200: Step[];
+  pathForOnlyLv1: VocationId[];
+  pathForLv10: VocationId[];
+  pathForLv100: VocationId[];
+  pathForLv200: VocationId[];
 };
 
 const initialState: State = {
@@ -24,17 +22,17 @@ const initialState: State = {
   pathForLv200: [],
 };
 
-type AddStepPayload = PayloadAction<{
+type AddVocationIdPayload = PayloadAction<{
   levelRangeId: LevelRangeId;
   vocationId: VocationId;
   level: number;
 }>;
-type RemoveStepPayload = PayloadAction<{
+type RemoveVocationIdPayload = PayloadAction<{
   levelRangeId: LevelRangeId;
   vocationId: VocationId;
   level: number;
 }>;
-type MoveStepPayload = PayloadAction<{
+type MoveVocationIdPayload = PayloadAction<{
   levelRangeId: LevelRangeId;
   sourceVocationId: VocationId;
   destVocationId: VocationId;
@@ -61,28 +59,28 @@ function getPathKeyFromRangeId(levelRangeId: LevelRangeId): PathKeys {
   }
 }
 
-function moveStep(
-  steps: Step[],
+function moveVocationId(
+  VocationIds: VocationId[],
   sourceVocationId: VocationId,
   destVocationId: VocationId,
   size: number,
-): Step[] {
+): VocationId[] {
   let moveCount = 0;
-  const nextSteps = steps.map((vocationId) => {
+  const nextVocationIds = VocationIds.map((vocationId) => {
     if (moveCount < size && vocationId === sourceVocationId) {
       moveCount += 1;
       return destVocationId;
     }
     return vocationId;
   });
-  return nextSteps;
+  return nextVocationIds;
 }
 
 export const slice = createSlice({
   name: VOCATION_PATH,
   initialState,
   reducers: {
-    addStep: (state: State, { payload }: AddStepPayload) => {
+    addStep: (state: State, { payload }: AddVocationIdPayload) => {
       const { levelRangeId, vocationId, level } = payload;
       const pathKey = getPathKeyFromRangeId(levelRangeId);
       const levelRange = getLevelRangeById(levelRangeId);
@@ -99,7 +97,7 @@ export const slice = createSlice({
         [pathKey]: nextPath.slice(0, rangeLength),
       };
     },
-    removeStep: (state: State, { payload }: RemoveStepPayload) => {
+    removeStep: (state: State, { payload }: RemoveVocationIdPayload) => {
       const { levelRangeId, vocationId, level } = payload;
       const pathKey = getPathKeyFromRangeId(levelRangeId);
       const levelRange = getLevelRangeById(levelRangeId);
@@ -118,12 +116,12 @@ export const slice = createSlice({
         [pathKey]: nextPath,
       };
     },
-    moveStep: (state: State, { payload }: MoveStepPayload) => {
+    moveStep: (state: State, { payload }: MoveVocationIdPayload) => {
       const { levelRangeId, sourceVocationId, destVocationId, level } = payload;
       const pathKey = getPathKeyFromRangeId(levelRangeId);
       return {
         ...state,
-        [pathKey]: moveStep(
+        [pathKey]: moveVocationId(
           state[pathKey],
           sourceVocationId,
           destVocationId,
@@ -131,15 +129,33 @@ export const slice = createSlice({
         ),
       };
     },
+    importFromCharacterInfo: (
+      state: State,
+      { payload }: PayloadAction<CharacterInfo>,
+    ) => {
+      const { vocationPath, weightClass } = payload;
+      return {
+        ...state,
+        weightClass,
+        pathForOnlyLv1: vocationPath.onlyLv1,
+        pathForLv10: vocationPath.forLv10,
+        pathForLv100: vocationPath.forLv100,
+        pathForLv200: vocationPath.forLv200,
+      };
+    },
   },
 });
 
 function selectPathStepsInfoByLevelRangeId(
   levelRangeId: LevelRangeId,
-): (state: RootState) => { steps: Step[]; limit: number; isFull: boolean } {
+): (state: RootState) => {
+  steps: VocationId[];
+  limit: number;
+  isFull: boolean;
+} {
   return (
     state: RootState,
-  ): { steps: Step[]; limit: number; isFull: boolean } => {
+  ): { steps: VocationId[]; limit: number; isFull: boolean } => {
     const steps = state.vocationPath[getPathKeyFromRangeId(levelRangeId)];
     const levelRange = getLevelRangeById(levelRangeId);
     const limit = levelRange.to - levelRange.from + 1;
@@ -147,6 +163,28 @@ function selectPathStepsInfoByLevelRangeId(
     return { steps, limit, isFull };
   };
 }
+
+const selectCharacterInfo = createSelector(
+  [(state: RootState) => state.vocationPath],
+  (vocationPath) => {
+    const {
+      pathForOnlyLv1,
+      pathForLv10,
+      pathForLv100,
+      pathForLv200,
+      weightClass,
+    } = vocationPath;
+    return {
+      vocationPath: {
+        onlyLv1: pathForOnlyLv1,
+        forLv10: pathForLv10,
+        forLv100: pathForLv100,
+        forLv200: pathForLv200,
+      },
+      weightClass,
+    };
+  },
+);
 
 const selectCurrentStatus = createSelector(
   [(state: RootState) => state.vocationPath],
@@ -171,9 +209,10 @@ const selectCurrentStatus = createSelector(
   },
 );
 
-export const vocationSelectors = {
+export const vocationPathSelectors = {
   selectPathStepsInfoByLevelRangeId,
   selectCurrentStatus,
+  selectCharacterInfo,
 };
 
 export const { actions: vocationPathActions, reducer } = slice;

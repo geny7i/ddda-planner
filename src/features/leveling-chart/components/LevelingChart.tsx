@@ -21,11 +21,7 @@ function rightPane() {
 }
 
 function leftPane() {
-  return (
-    <Container>
-      TODO
-    </Container>
-  );
+  return <Container>TODO</Container>;
 }
 
 function LevelingChart() {

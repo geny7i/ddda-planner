@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   vocationPathActions,
-  vocationSelectors,
+  vocationPathSelectors,
 } from 'features/vocation-path/vocationPathSlice';
 import { LevelRange } from 'models/levelRange';
 import { VocationId, Vocations } from 'models/vocation';
@@ -20,7 +20,7 @@ function LevelRangeSection(props: Props) {
   const { levelRange } = props;
   const dispatch = useDispatch();
   const { steps, isFull } = useSelector(
-    vocationSelectors.selectPathStepsInfoByLevelRangeId(levelRange.id),
+    vocationPathSelectors.selectPathStepsInfoByLevelRangeId(levelRange.id),
   );
 
   type StepCountByVocationId = Partial<Record<VocationId, number>>;
@@ -87,16 +87,17 @@ function LevelRangeSection(props: Props) {
         >
           <Accordion.Body style={{ height: '70vh' }}>
             <Row md={{ cols: 3 }} className="g-4">
-              {
-                vocationsWithCount.map((vocationWithCount) => (
-                  !!vocationWithCount.count && <VocationStepsCard
-                    key={vocationWithCount.vocation.id}
-                    vocation={vocationWithCount.vocation}
-                    stepCount={vocationWithCount.count}
-                    levelRangeId={levelRange.id}
-                  />
-                ))
-              }
+              {vocationsWithCount.map(
+                (vocationWithCount) =>
+                  !!vocationWithCount.count && (
+                    <VocationStepsCard
+                      key={vocationWithCount.vocation.id}
+                      vocation={vocationWithCount.vocation}
+                      stepCount={vocationWithCount.count}
+                      levelRangeId={levelRange.id}
+                    />
+                  ),
+              )}
             </Row>
           </Accordion.Body>
         </Droppable>
