@@ -146,9 +146,9 @@ export const slice = createSlice({
   },
 });
 
-function selectPathStepsInfoByLevelRangeId(
-  levelRangeId: LevelRangeId,
-): (state: RootState) => {
+function selectPathStepsInfoByLevelRangeId(levelRangeId: LevelRangeId): (
+  state: RootState,
+) => {
   steps: VocationId[];
   limit: number;
   isFull: boolean;

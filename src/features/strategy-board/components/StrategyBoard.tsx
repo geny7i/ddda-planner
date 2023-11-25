@@ -3,7 +3,7 @@ import VocationSelector from 'features/vocation-selector/components/VocationSele
 import StatusPreview from 'features/status-preview/components/StatusPreview';
 import { useSelector } from 'react-redux';
 import { strategyBoardSelectors } from 'features/strategy-board/strategyBoardSlice';
-import Navbar from 'components/Navbar';
+import ContainerWithSidebar from 'components/ContainerWithSidebar';
 import VocationDeck from './VocationDeck';
 
 function rightPane() {
@@ -25,10 +25,9 @@ function rightPane() {
 
 function StrategyBoard() {
   return (
-    <>
-      <Navbar />
+    <ContainerWithSidebar>
       <SplitPane left={VocationDeck} right={rightPane} />
-    </>
+    </ContainerWithSidebar>
   );
 }
 
