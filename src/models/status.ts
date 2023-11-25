@@ -18,13 +18,15 @@ export type Status = {
   [K in StatId]: number;
 };
 
-export enum WeightClass {
-  ss = 'ss',
-  s = 's',
-  m = 'm',
-  l = 'l',
-  ll = 'll',
-}
+export const WEIGHT_CLASSES = {
+  ss: 'ss',
+  s: 's',
+  m: 'm',
+  l: 'l',
+  ll: 'll',
+} as const;
+
+export type WeightClass = (typeof WEIGHT_CLASSES)[keyof typeof WEIGHT_CLASSES];
 
 const vanillaStatus = {
   hp: 0,

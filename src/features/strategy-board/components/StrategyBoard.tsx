@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { strategyBoardSelectors } from 'features/strategy-board/strategyBoardSlice';
 import ContainerWithSidebar from 'components/ContainerWithSidebar';
 import VocationDeck from './VocationDeck';
+import WeightClassSelect from './WeightClassSelect';
 
 function rightPane() {
   const levelRangeId = useSelector(
@@ -15,6 +16,7 @@ function rightPane() {
     <>
       <div className="h-25">
         <StatusPreview />
+        <WeightClassSelect />
       </div>
       <div className="h-75">
         <VocationSelector levelRangeId={levelRangeId} />

@@ -1,6 +1,10 @@
 import { VOCATION_PATH } from 'constants/sliceKeys';
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
-import { getStatusFromCharacterInfo, WeightClass } from 'models/status';
+import {
+  getStatusFromCharacterInfo,
+  WEIGHT_CLASSES,
+  WeightClass,
+} from 'models/status';
 import { VocationId } from 'models/vocation';
 import { LevelRangeId, getLevelRangeById } from 'models/levelRange';
 import { RootState } from 'src/initializers/store';
@@ -15,7 +19,7 @@ export type State = {
 };
 
 const initialState: State = {
-  weightClass: WeightClass.m,
+  weightClass: WEIGHT_CLASSES.m,
   pathForOnlyLv1: [],
   pathForLv10: [],
   pathForLv100: [],
@@ -80,6 +84,13 @@ export const slice = createSlice({
   name: VOCATION_PATH,
   initialState,
   reducers: {
+    setWeightClass: (
+      state: State,
+      { payload }: PayloadAction<WeightClass>,
+    ) => ({
+      ...state,
+      weightClass: payload,
+    }),
     addStep: (state: State, { payload }: AddVocationIdPayload) => {
       const { levelRangeId, vocationId, level } = payload;
       const pathKey = getPathKeyFromRangeId(levelRangeId);
@@ -146,6 +157,10 @@ export const slice = createSlice({
   },
 });
 
+function selectWeightClass(state: RootState): WeightClass {
+  return state.vocationPath.weightClass;
+}
+
 function selectPathStepsInfoByLevelRangeId(levelRangeId: LevelRangeId): (
   state: RootState,
 ) => {
@@ -211,6 +226,7 @@ const selectCurrentStatus = createSelector(
 
 export const vocationPathSelectors = {
   selectPathStepsInfoByLevelRangeId,
+  selectWeightClass,
   selectCurrentStatus,
   selectCharacterInfo,
 };
