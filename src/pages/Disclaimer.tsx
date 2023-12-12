@@ -29,11 +29,11 @@ function Disclaimer() {
 
           <h2 className="mt-5">Disclaimer</h2>
           <p>
-            This tool is an unofficial fan activity for "Dragon's Dogma: Dark
-            Arisen" (developed and sold by Capcom Co., Ltd.) and is not
-            affiliated in any way with Capcom Co., Ltd. or its subsidiaries.
-            "Dragon's Dogma: Dark Arisen" is a registered trademark of Capcom
-            Co., Ltd.
+            This tool is an unofficial fan activity for &quot;Dragon&apos;s
+            Dogma: Dark Arisen&quot; (developed and sold by Capcom Co., Ltd.)
+            and is not affiliated in any way with Capcom Co., Ltd. or its
+            subsidiaries. &quot;Dragon&apos;s Dogma: Dark Arisen&quot; is a
+            registered trademark of Capcom Co., Ltd.
           </p>
           <p>
             I am not responsible for any damage that may arise from the use of
