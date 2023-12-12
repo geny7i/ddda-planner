@@ -87,7 +87,8 @@ export default function ContainerWithSidebar(props: Props) {
         {opened && (
           <Nav className="flex-column">
             <ActiveNavLink label="Board" to="/" />
-            <ActiveNavLink label="Chart" to="/chart" />
+            {/* <ActiveNavLink label="Chart" to="/chart" /> */}
+            <ActiveNavLink label="免責事項(Disclaimer)" to="/disclaimer" />
           </Nav>
         )}
       </Navbar>

@@ -6,6 +6,7 @@ import LevelingPlan from 'features/leveling-chart/components/LevelingChart';
 import StrategyBoard from 'features/strategy-board/components/StrategyBoard';
 import { useDrop } from 'react-dnd';
 import InitializeFromRestoreParameter from 'components/InitializeFromRestoreParameter';
+import Disclaimer from './pages/Disclaimer';
 
 function Mobile() {
   return <div className="App">mobile</div>;
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<StrategyBoard />} />
           <Route path="/chart" element={<LevelingPlan />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/mobile" element={<Mobile />} />
           <Route path="/restore" element={<InitializeFromRestoreParameter />} />
         </Routes>
